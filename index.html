@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GLP-1减重市场竞品分析报告 — 中国市场</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; background: #F1EFE8; color: #1A1A1A; font-size: 13px; line-height: 1.6; }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 24px 16px 60px; }
+
+  /* Header */
+  .report-header { background: #26215C; color: #fff; border-radius: 16px; padding: 36px 40px; margin-bottom: 24px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; right: -40px; top: -40px; width: 300px; height: 300px; border-radius: 50%; background: rgba(255,255,255,0.04); }
+  .report-header .tag-row { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+  .tag { display: inline-block; padding: 3px 10px; border-radius: 4px; font-size: 11px; font-weight: 500; }
+  .tag-primary { background: rgba(127,119,221,0.4); color: #CECBF6; border: 0.5px solid rgba(127,119,221,0.6); }
+  .tag-amber { background: rgba(186,117,23,0.3); color: #FAC775; border: 0.5px solid rgba(186,117,23,0.5); }
+  .report-title { font-size: 22px; font-weight: 600; line-height: 1.3; margin-bottom: 8px; }
+  .report-subtitle { font-size: 14px; color: rgba(255,255,255,0.65); margin-bottom: 20px; }
+  .header-meta { display: flex; gap: 24px; font-size: 12px; color: rgba(255,255,255,0.5); flex-wrap: wrap; }
+  .header-meta span { display: flex; align-items: center; gap: 5px; }
+
+  /* Section */
+  .section { margin-bottom: 24px; }
+  .section-title { font-size: 15px; font-weight: 600; color: #26215C; padding-bottom: 10px; border-bottom: 2px solid #EEEDFE; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+  .section-title::before { content: ''; display: inline-block; width: 4px; height: 16px; background: #7F77DD; border-radius: 2px; }
+
+  /* KPI Row */
+  .kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
+  .kpi-card { background: #fff; border-radius: 12px; border: 0.5px solid rgba(0,0,0,0.08); padding: 16px; }
+  .kpi-label { font-size: 11px; color: #888780; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .kpi-value { font-size: 22px; font-weight: 600; color: #26215C; }
+  .kpi-sub { font-size: 11px; color: #888780; margin-top: 3px; }
+
+  /* Brand Cards */
+  .brand-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .brand-card { background: #fff; border-radius: 12px; border: 0.5px solid rgba(0,0,0,0.08); overflow: hidden; }
+  .brand-header { padding: 14px 18px 12px; border-bottom: 0.5px solid rgba(0,0,0,0.06); display: flex; align-items: flex-start; justify-content: space-between; }
+  .brand-logo { display: flex; align-items: center; gap: 10px; }
+  .brand-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; color: #fff; flex-shrink: 0; }
+  .brand-name { font-size: 14px; font-weight: 600; color: #1A1A1A; }
+  .brand-product { font-size: 12px; color: #888780; margin-top: 1px; }
+  .status-badge { font-size: 11px; padding: 3px 8px; border-radius: 4px; font-weight: 500; flex-shrink: 0; }
+  .status-onmarket { background: #EAF3DE; color: #3B6D11; }
+  .status-pending { background: #FAEEDA; color: #854F0B; }
+  .status-pipeline { background: #E6F1FB; color: #185FA5; }
+  .brand-body { padding: 14px 18px; }
+  .info-row { display: flex; gap: 8px; margin-bottom: 8px; font-size: 12px; }
+  .info-label { color: #888780; width: 56px; flex-shrink: 0; }
+  .info-value { color: #1A1A1A; flex: 1; }
+  .info-value.highlight { color: #7F77DD; font-weight: 500; }
+  .market-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 10px; }
+  .mkt-tag { font-size: 10px; padding: 2px 7px; background: #EEEDFE; color: #534AB7; border-radius: 3px; }
+
+  /* Comparison Table */
+  .compare-table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 12px; overflow: hidden; border: 0.5px solid rgba(0,0,0,0.08); }
+  .compare-table th { background: #26215C; color: #fff; padding: 10px 14px; font-size: 12px; font-weight: 500; text-align: left; }
+  .compare-table td { padding: 10px 14px; font-size: 12px; border-bottom: 0.5px solid rgba(0,0,0,0.05); vertical-align: top; }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table tr:nth-child(even) td { background: #F9F9F7; }
+  .winner { color: #3B6D11; font-weight: 600; }
+  .loser { color: #A32D2D; }
+
+  /* Market chart placeholder */
+  .chart-area { background: #fff; border-radius: 12px; border: 0.5px solid rgba(0,0,0,0.08); padding: 24px; margin-bottom: 16px; }
+  .chart-title { font-size: 13px; font-weight: 600; color: #26215C; margin-bottom: 16px; }
+
+  /* Pipeline */
+  .pipeline-stage { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .stage-label { width: 60px; font-size: 11px; color: #888780; text-align: right; flex-shrink: 0; }
+  .stage-bar { flex: 1; height: 24px; border-radius: 6px; display: flex; align-items: center; padding: 0 12px; font-size: 11px; color: #fff; font-weight: 500; }
+
+  /* Social */
+  .social-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .social-card { background: #fff; border-radius: 12px; border: 0.5px solid rgba(0,0,0,0.08); padding: 16px 18px; }
+  .social-card-title { font-size: 13px; font-weight: 600; color: #1A1A1A; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+  .quote { background: #EEEDFE; border-left: 3px solid #7F77DD; border-radius: 0 6px 6px 0; padding: 10px 14px; font-size: 12px; color: #444441; margin-bottom: 8px; font-style: italic; }
+  .quote-source { font-size: 11px; color: #888780; margin-top: 4px; font-style: normal; }
+  .insight { background: #FAEEDA; border-radius: 8px; padding: 10px 14px; font-size: 12px; color: #633806; }
+  .insight-title { font-weight: 600; margin-bottom: 4px; }
+
+  /* Price war */
+  .price-table { width: 100%; background: #fff; border-radius: 12px; border: 0.5px solid rgba(0,0,0,0.08); overflow: hidden; }
+  .price-table th { background: #534AB7; color: #fff; padding: 10px 14px; font-size: 12px; font-weight: 500; }
+  .price-table td { padding: 10px 14px; font-size: 12px; border-bottom: 0.5px solid rgba(0,0,0,0.05); }
+  .price-table tr:last-child td { border-bottom: none; }
+  .price-up { color: #A32D2D; }
+  .price-down { color: #3B6D11; }
+
+  /* Footer */
+  .report-footer { margin-top: 24px; padding: 16px 20px; background: #fff; border-radius: 12px; border: 0.5px solid rgba(0,0,0,0.08); font-size: 11px; color: #888780; }
+  .footer-title { font-weight: 600; color: #444441; margin-bottom: 6px; font-size: 12px; }
+
+  /* Trend indicators */
+  .trend { display: inline-flex; align-items: center; gap: 3px; font-size: 11px; font-weight: 500; }
+  .trend-up { color: #3B6D11; }
+  .trend-down { color: #A32D2D; }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .kpi-row { grid-template-columns: 1fr 1fr; }
+    .brand-grid { grid-template-columns: 1fr; }
+    .social-grid { grid-template-columns: 1fr; }
+    .report-header { padding: 24px 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Report Header -->
+  <div class="report-header">
+    <div class="tag-row">
+      <span class="tag tag-primary">竞品分析</span>
+      <span class="tag tag-primary">GLP-1减重</span>
+      <span class="tag tag-amber">中国市场 · 2025-2026</span>
+    </div>
+    <h1 class="report-title">GLP-1减重市场竞品分析报告</h1>
+    <p class="report-subtitle">覆盖诺和诺德、礼来、信达生物、恒瑞医药、阿斯利康、辉瑞/先为达六大品牌中国市场动态</p>
+    <div class="header-meta">
+      <span>📅 数据截至 2026年5月</span>
+      <span>📊 来源：公开财报、行业媒体、药监局数据</span>
+      <span>🏷️ 侧重：中国市场 / 全球背景补充</span>
+    </div>
+  </div>
+
+  <!-- KPI Summary -->
+  <div class="section">
+    <div class="kpi-row">
+      <div class="kpi-card">
+        <div class="kpi-label">2025市场规模</div>
+        <div class="kpi-value">141亿</div>
+        <div class="kpi-sub">人民币 · GLP-1类药物</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">年增长率</div>
+        <div class="kpi-value">+89.6%</div>
+        <div class="kpi-sub">2025年同比</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">2030预测规模</div>
+        <div class="kpi-value">1000亿+</div>
+        <div class="kpi-sub">人民币 · 整体减肥药</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">中国肥胖人口</div>
+        <div class="kpi-value">6.2亿</div>
+        <div class="kpi-sub">BMI≥24 · 渗透率极低</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Channel Shift Chart -->
+  <div class="section">
+    <div class="chart-area">
+      <div class="chart-title">GLP-1三大渠道增速对比（2025年）</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;text-align:center">
+        <div>
+          <div style="font-size:28px;font-weight:700;color:#7F77DD;margin-bottom:4px">+169%</div>
+          <div style="font-size:13px;font-weight:500;color:#1A1A1A">电商渠道</div>
+          <div style="font-size:12px;color:#888780">GLP-1专项 · 规模28.71亿</div>
+        </div>
+        <div>
+          <div style="font-size:28px;font-weight:700;color:#534AB7;margin-bottom:4px">+88%</div>
+          <div style="font-size:13px;font-weight:500;color:#1A1A1A">药店渠道</div>
+          <div style="font-size:12px;color:#888780">连锁药店高速增长</div>
+        </div>
+        <div>
+          <div style="font-size:28px;font-weight:700;color:#888780;margin-bottom:4px">+11%</div>
+          <div style="font-size:13px;font-weight:500;color:#1A1A1A">院内渠道</div>
+          <div style="font-size:12px;color:#888780">增速放缓，处方逻辑受冲击</div>
+        </div>
+      </div>
+      <div style="margin-top:20px;background:#FAEEDA;border-radius:8px;padding:12px 16px;font-size:12px;color:#633806">
+        ⚡ <strong>结构性拐点预警：</strong>按当前增速，电商渠道预计于<strong>2026年上半年</strong>首次超越院内，成为第一大GLP-1购药渠道。2025年Q4电商/院内规模差距已缩至仅15%。
+      </div>
+    </div>
+  </div>
+
+  <!-- Brand Product Cards -->
+  <div class="section">
+    <div class="section-title">六大品牌产品概览</div>
+    <div class="brand-grid">
+
+      <!-- 诺和诺德 -->
+      <div class="brand-card">
+        <div class="brand-header">
+          <div class="brand-logo">
+            <div class="brand-icon" style="background:#60A730">诺</div>
+            <div>
+              <div class="brand-name">诺和诺德</div>
+              <div class="brand-product">Novo Nordisk · 丹麦</div>
+            </div>
+          </div>
+          <span class="status-badge status-onmarket">🏆 市场份额领先</span>
+        </div>
+        <div class="brand-body">
+          <div class="info-row">
+            <span class="info-label">核心产品</span>
+            <span class="info-value highlight">诺和盈® Wegovy（司美格鲁肽2.4mg）</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">靶点</span>
+            <span class="info-value">GLP-1单靶点 · 周制剂注射</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">中国上市</span>
+            <span class="info-value">2024年11月17日（减重版）</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">2025业绩</span>
+            <span class="info-value">Q1中国近7亿元（上市90天）<span class="trend trend-down">↓份额被反超</span></span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">重大事件</span>
+            <span class="info-value">2025年12月心血管适应证获批；专利2026年3月到期</span>
+          </div>
+          <div class="market-tags">
+            <span class="mkt-tag">电商份额40%</span>
+            <span class="mkt-tag">降价约50%</span>
+            <span class="mkt-tag">10+仿制药排队</span>
+            <span class="mkt-tag">DTC广告</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 礼来 -->
+      <div class="brand-card">
+        <div class="brand-header">
+          <div class="brand-logo">
+            <div class="brand-icon" style="background:#005EB8">礼</div>
+            <div>
+              <div class="brand-name">礼来</div>
+              <div class="brand-product">Eli Lilly · 美国</div>
+            </div>
+          </div>
+          <span class="status-badge status-onmarket">⭐ 增速领跑</span>
+        </div>
+        <div class="brand-body">
+          <div class="info-row">
+            <span class="info-label">核心产品</span>
+            <span class="info-value highlight">穆峰达® Mounjaro/Zepbound（替尔泊肽）</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">靶点</span>
+            <span class="info-value">GIP/GLP-1双靶点 · 周制剂注射</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">中国上市</span>
+            <span class="info-value">2025年1月2日（双适应症）</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">2025业绩</span>
+            <span class="info-value">Q1中国区总收入4.51亿美元（+20%）<span class="trend trend-up">↑</span></span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">重大事件</span>
+            <span class="info-value">2025年7月获批OSA（阻塞性睡眠呼吸暂停）第三适应症；12月进入国家医保；降价约80%</span>
+          </div>
+          <div class="market-tags">
+            <span class="mkt-tag">电商份额44%</span>
+            <span class="mkt-tag">GLP-1+Orforglipron双管线</span>
+            <span class="mkt-tag">2026全球获批</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 信达生物 -->
+      <div class="brand-card">
+        <div class="brand-header">
+          <div class="brand-logo">
+            <div class="brand-icon" style="background:#D85A30">信</div>
+            <div>
+              <div class="brand-name">信达生物</div>
+              <div class="brand-product">Innovent Biologics · 中国</div>
+            </div>
+          </div>
+          <span class="status-badge status-onmarket">✅ 已上市</span>
+        </div>
+        <div class="brand-body">
+          <div class="info-row">
+            <span class="info-label">核心产品</span>
+            <span class="info-value highlight">玛仕度肽® IBI362（GLP-1/GCG双靶点）</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">靶点</span>
+            <span class="info-value">GLP-1/GCG双受体激动剂</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">已获批适应症</span>
+            <span class="info-value">① 2025年7月 成人重/超重（BMI≥28）长期体重管理<br>② 2025年9月 2型糖尿病</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">III期数据</span>
+            <span class="info-value">GLORY-2：中重度肥胖平均减重<span class="highlight">20.08%</span></span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">头对头</span>
+            <span class="info-value">DREAMS-3头对头击败司美格鲁肽（2025年10月）</span>
+          </div>
+          <div class="market-tags">
+            <span class="mkt-tag">国产首个双靶点</span>
+            <span class="mkt-tag">5项III期全部成功</span>
+            <span class="mkt-tag">门诊渠道预先布局</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 恒瑞医药 -->
+      <div class="brand-card">
+        <div class="brand-header">
+          <div class="brand-logo">
+            <div class="brand-icon" style="background:#1D4ED8">恒</div>
+            <div>
+              <div class="brand-name">恒瑞医药</div>
+              <div class="brand-product">Hengrui Medicine · 中国</div>
+            </div>
+          </div>
+          <span class="status-badge status-pending">📋 NDA已受理</span>
+        </div>
+        <div class="brand-body">
+          <div class="info-row">
+            <span class="info-label">核心产品</span>
+            <span class="info-value highlight">HRS9531（GLP-1/GIP双靶点注射）</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">靶点</span>
+            <span class="info-value">GLP-1R/GIPR双受体激动剂</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">上市进展</span>
+            <span class="info-value">2025年9月NDA获受理（长期体重管理）</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">临床数据</span>
+            <span class="info-value">减重19.2%（48周，6mg剂量）<span class="trend trend-up">↑</span></span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">口服管线</span>
+            <span class="info-value">HRS-7535口服小分子已启动III期；高血压+肥胖合并适应症获批临床</span>
+          </div>
+          <div class="market-tags">
+            <span class="mkt-tag">双靶点+口服双布局</span>
+            <span class="mkt-tag">2025 ADA大会发布数据</span>
+            <span class="mkt-tag">国产创新代表</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 阿斯利康 -->
+      <div class="brand-card">
+        <div class="brand-header">
+          <div class="brand-logo">
+            <div class="brand-icon" style="background:#BE185D">阿</div>
+            <div>
+              <div class="brand-name">阿斯利康</div>
+              <div class="brand-product">AstraZeneca · 英国/瑞典</div>
+            </div>
+          </div>
+          <span class="status-badge status-pipeline">🔬 临床阶段</span>
+        </div>
+        <div class="brand-body">
+          <div class="info-row">
+            <span class="info-label">核心产品</span>
+            <span class="info-value highlight">AZD5004（口服）+ AZD6234（注射）</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">靶点</span>
+            <span class="info-value">GLP-1（AZD5004）；GLP-1+GCG+Amylin联合（AZD6234）</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">临床进展</span>
+            <span class="info-value">AZD5004：2b期（2025年底/2026年初读数）；AZD6234：中国获批临床（2024年12月）</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">早期数据</span>
+            <span class="info-value">AZD5004 4周减重5.8%（T2D肥胖患者，1期）</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">新品启动</span>
+            <span class="info-value">2026年4月新候选分子启动Phase 1（含中国患者队列）</span>
+          </div>
+          <div class="market-tags">
+            <span class="mkt-tag">口服+注射双路线</span>
+            <span class="mkt-tag">三重重磅布局</span>
+            <span class="mkt-tag">中国同步临床</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 辉瑞 -->
+      <div class="brand-card">
+        <div class="brand-header">
+          <div class="brand-logo">
+            <div class="brand-icon" style="background:#6B21A8">辉</div>
+            <div>
+              <div class="brand-name">辉瑞 × 杭州先为达</div>
+              <div class="brand-product">Pfizer · 美国 × Xianweida Bio · 中国</div>
+            </div>
+          </div>
+          <span class="status-badge status-onmarket">✅ 已上市</span>
+        </div>
+        <div class="brand-body">
+          <div class="info-row">
+            <span class="info-label">核心产品</span>
+            <span class="info-value highlight">埃诺格鲁肽（Ecnoglutide）</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">靶点</span>
+            <span class="info-value">GLP-1单靶点 · cAMP偏向性激动</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">中国上市</span>
+            <span class="info-value">2026年1月（2型糖尿病）</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">合作模式</span>
+            <span class="info-value">辉瑞 × 杭州先为达生物（BD商业化合作）</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">BD交易</span>
+            <span class="info-value">中国区商业化权益，交易额最高4.95亿美元</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">体重管理</span>
+            <span class="info-value">NDA已受理，审批中</span>
+          </div>
+          <div class="market-tags">
+            <span class="mkt-tag">中国BD合作</span>
+            <span class="mkt-tag">cAMP偏向性机制</span>
+            <span class="mkt-tag">糖尿病已上市</span>
+            <span class="mkt-tag">减重NDA审批中</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Competitive Landscape Comparison -->
+  <div class="section">
+    <div class="section-title">核心维度竞争对比</div>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>维度</th>
+          <th>诺和诺德 · 诺和盈</th>
+          <th>礼来 · 穆峰达</th>
+          <th>信达 · 玛仕度肽</th>
+          <th>恒瑞 · HRS9531</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>靶点机制</strong></td>
+          <td>GLP-1单靶点</td>
+          <td class="winner">GIP/GLP-1双靶点</td>
+          <td>GLP-1/GCG双靶点</td>
+          <td>GLP-1/GIP双靶点</td>
+        </tr>
+        <tr>
+          <td><strong>中国上市状态</strong></td>
+          <td class="winner">已上市（2024.11）</td>
+          <td class="winner">已上市（2025.1）</td>
+          <td class="winner">已上市（2025.7/9）</td>
+          <td>NDA受理（2025.9）</td>
+        </tr>
+        <tr>
+          <td><strong>III期减重数据</strong></td>
+          <td>~15%（STEP系列）</td>
+          <td>~20-22%（SURMOUNT）</td>
+          <td class="winner">~20.08%（GLORY-2）</td>
+          <td>~19.2%（48周）</td>
+        </tr>
+        <tr>
+          <td><strong>电商市场份额</strong></td>
+          <td>40%</td>
+          <td class="winner">44%（领跑）</td>
+          <td>6%（快速切入）</td>
+          <td>—（未上市）</td>
+        </tr>
+        <tr>
+          <td><strong>价格竞争力</strong></td>
+          <td class="winner">较低（已有降价50%）</td>
+          <td>较高（降幅80%后仍贵）</td>
+          <td>待定</td>
+          <td>待定</td>
+        </tr>
+        <tr>
+          <td><strong>适应症广度</strong></td>
+          <td>减重+心血管保护</td>
+          <td class="winner">减重+降糖+OSA（3项）</td>
+          <td>减重+糖尿病（5项III期）</td>
+          <td>减重+高血压（合并适应症）</td>
+        </tr>
+        <tr>
+          <td><strong>2026威胁</strong></td>
+          <td style="color:#A32D2D">⚠️ 专利到期，仿制药冲击</td>
+          <td>待定</td>
+          <td>上市初期，快速上量中</td>
+          <td>有望获批抢份额</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Price War -->
+  <div class="section">
+    <div class="section-title">价格战：2025-2026降价风暴</div>
+    <table class="price-table">
+      <thead>
+        <tr>
+          <th>品牌</th>
+          <th>原价/参考价</th>
+          <th>降幅</th>
+          <th>现状</th>
+          <th>驱动因素</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>诺和盈</strong></td>
+          <td>较高</td>
+          <td class="price-down">约50%</td>
+          <td>医院挂网价格大幅下调</td>
+          <td>应对穆峰达竞争 + 仿制药压力前移</td>
+        </tr>
+        <tr>
+          <td><strong>穆峰达</strong></td>
+          <td>高于诺和盈近2倍</td>
+          <td class="price-down">约80%</td>
+          <td>进入国家医保（2025.12）；大幅降价</td>
+          <td>医保准入 + 扩大可及人群</td>
+        </tr>
+        <tr>
+          <td><strong>司美格鲁肽</strong></td>
+          <td>—</td>
+          <td class="price-down">预测-25%（仿制药）</td>
+          <td>专利2026年3月到期，10+仿制药排队</td>
+          <td>专利悬崖 + 国产竞争</td>
+        </tr>
+        <tr>
+          <td><strong>玛仕度肽</strong></td>
+          <td>待定</td>
+          <td>—</td>
+          <td>定价策略尚未披露</td>
+          <td>预计定价低于进口品牌</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Market Activity Strategy -->
+  <div class="section">
+    <div class="section-title">品牌市场活动策略对比</div>
+    <div style="background:#fff;border-radius:12px;border:0.5px solid rgba(0,0,0,0.08);overflow:hidden">
+      <table class="compare-table" style="border-radius:0;border:none">
+        <thead>
+          <tr>
+            <th>品牌</th>
+            <th>数字化平台</th>
+            <th>患者教育</th>
+            <th>渠道策略</th>
+            <th>品牌主张</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>诺和诺德</strong></td>
+            <td>诺和关怀®（含药店地图）<br>微信公众号+小程序</td>
+            <td>"健康城市 健康体重"<br>"健康体重 健康未来"（儿少）</td>
+            <td>京东健康战略合作<br>美团买药首发<br>60+民营减重门诊</td>
+            <td>"改变世界看待肥胖的方式"<br>严肃疾病 + 全球首个周制剂</td>
+          </tr>
+          <tr>
+            <td><strong>礼来</strong></td>
+            <td>Mounjaro/Zepbound品牌数字生态</td>
+            <td>以医患教育为核心<br>内分泌科医生沟通</td>
+            <td>私立医疗渠道为主<br>一线城市医院处方</td>
+            <td>"首个且唯一"双靶点<br>GIP协同效应叙事</td>
+          </tr>
+          <tr>
+            <td><strong>信达生物</strong></td>
+            <td>待观察（创新药企数字基础较弱）</td>
+            <td>预先布局门诊渠道教育</td>
+            <td>门诊渠道签约优先<br>医保谈判准备中</td>
+            <td>头对头击败司美格鲁肽<br>中国创新药代表</td>
+          </tr>
+          <tr>
+            <td><strong>恒瑞医药</strong></td>
+            <td>恒瑞官网+学术会议</td>
+            <td>ADA大会发布II期数据</td>
+            <td>国内销售网络成熟<br>进医保是核心策略</td>
+            <td>口服便利性突破<br>减重+高血压合并叙事</td>
+          </tr>
+          <tr>
+            <td><strong>辉瑞/先为达</strong></td>
+            <td>依托辉瑞现有渠道网络</td>
+            <td>学术推广为主</td>
+            <td>借助辉瑞医院资源<br>商业化团队合作</td>
+            <td>BD合作模式<br>cAMP偏向性机制差异化</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Social Media Landscape -->
+  <div class="section">
+    <div class="section-title">社交媒体舆情：用户说什么？</div>
+    <div class="social-grid">
+
+      <div class="social-card">
+        <div class="social-card-title">
+          <span>📱</span> 小红书 · 司美格鲁肽讨论
+        </div>
+        <div class="quote">
+          "什么人都可以用司美格鲁肽，减肥效果立竿见影！"
+          <div class="quote-source">— 小红书用户言论（部分夸大描述，已被平台处理）</div>
+        </div>
+        <div class="quote">
+          "使用初期恶心、呕吐、情绪低落，停药后体重反弹是热议焦点"
+          <div class="quote-source">— 2025年5月 央广网健康报道</div>
+        </div>
+        <div class="insight">
+          <div class="insight-title">⚠️ 平台风险提示</div>
+          小红书已处理违规笔记5000+条（夸大司美格鲁肽减肥功效），平台对医药类内容管控趋严。真实用户反馈集中在：初期副作用、停药反弹焦虑、购药渠道困惑。
+        </div>
+      </div>
+
+      <div class="social-card">
+        <div class="social-card-title">
+          <span>🔬</span> 用户洞察 · 消费者行为画像
+        </div>
+        <div class="insight" style="margin-bottom:10px">
+          <div class="insight-title">用户结构（电商渠道）</div>
+          82%的GLP-1电商购药者以<strong>减重/体型管理</strong>为首要诉求，仅18%为控糖/糖尿病。男性用户占比已升至约40%（以前几乎为0），金融/咨询领域商务人士居多。
+        </div>
+        <div class="insight" style="margin-bottom:10px">
+          <div class="insight-title">高端用户画像（穆峰达）</div>
+          企业高管、企业主为主，甚至出现"秘书代下单"现象。有海外生活经历者（如留学生）对替尔泊肽接受度更高。
+        </div>
+        <div class="insight">
+          <div class="insight-title">关键决策因子</div>
+          消费者愿为更强疗效支付溢价——替尔泊肽价格更高却完成电商份额反超（44% vs 40%），验证疗效>价格。
+        </div>
+      </div>
+
+      <div class="social-card">
+        <div class="social-card-title">
+          <span>📰</span> 媒体叙事 · 品牌传播框架
+        </div>
+        <div class="insight" style="margin-bottom:10px">
+          <div class="insight-title">诺和诺德叙事策略</div>
+          强调"全球首个GLP-1周制剂"+"严肃疾病"定位，纠正"肥胖=审美问题"认知误区；绑定"健康中国2030"国家战略；援引马斯克等名人效应。
+        </div>
+        <div class="insight" style="margin-bottom:10px">
+          <div class="insight-title">礼来叙事策略</div>
+          以"双靶点/GIP协同"建立科学差异化叙事；SURMOUNT临床数据背书；在华30年本土形象建设。
+        </div>
+        <div class="insight">
+          <div class="insight-title">国产叙事策略</div>
+          信达：头对头胜出叙事 + 中国创新药崛起情怀牌；恒瑞：口服便利性 + 合并适应症临床价值。
+        </div>
+      </div>
+
+      <div class="social-card">
+        <div class="social-card-title">
+          <span>📊</span> 竞争格局 · 渠道与份额
+        </div>
+        <div style="font-size:12px;color:#444441;margin-bottom:10px">
+          <div style="margin-bottom:8px"><strong>电商份额竞争（2025年）</strong></div>
+          <div style="margin-bottom:4px;display:flex;align-items:center;gap:8px">
+            <div style="width:44%;height:16px;background:#005EB8;border-radius:4px"></div>
+            <span style="font-weight:600;color:#005EB8">替尔泊肽 44%</span>
+          </div>
+          <div style="margin-bottom:4px;display:flex;align-items:center;gap:8px">
+            <div style="width:40%;height:16px;background:#60A730;border-radius:4px"></div>
+            <span style="font-weight:600;color:#60A730">司美格鲁肽 40%</span>
+          </div>
+          <div style="margin-bottom:4px;display:flex;align-items:center;gap:8px">
+            <div style="width:6%;height:16px;background:#D85A30;border-radius:4px"></div>
+            <span style="color:#D85A30">玛仕度肽 6%</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <div style="width:10%;height:16px;background:#888780;border-radius:4px"></div>
+            <span style="color:#888780">其他 10%</span>
+          </div>
+        </div>
+        <div class="insight">
+          <div class="insight-title">⚡ 格局剧变信号</div>
+          2025年GLP-1整体市场：<strong>电商增速102%</strong>（院内仅11%），仿制药10+排队，2026年3月专利到期，替尔泊肽进入医保。2026年是格局重塑分水岭年。
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Upcoming Pipeline -->
+  <div class="section">
+    <div class="section-title">2026年关键事件时间轴</div>
+    <div style="background:#fff;border-radius:12px;border:0.5px solid rgba(0,0,0,0.08);padding:24px">
+      <div style="display:flex;flex-direction:column;gap:14px">
+
+        <div style="display:flex;gap:16px;align-items:flex-start">
+          <div style="width:120px;flex-shrink:0;font-size:12px;font-weight:600;color:#7F77DD;text-align:right;padding-top:2px">2026 Q1-Q2</div>
+          <div style="flex:1">
+            <div style="font-size:13px;font-weight:600;color:#1A1A1A;margin-bottom:3px">⚠️ 司美格鲁肽专利到期（3月）+ 仿制药入场</div>
+            <div style="font-size:12px;color:#888780">10+国产仿制药排队上市；高盛预测整体价格下降约25%；电商渠道预计首超院内</div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:16px;align-items:flex-start">
+          <div style="width:120px;flex-shrink:0;font-size:12px;font-weight:600;color:#7F77DD;text-align:right;padding-top:2px">2026 Q2-Q3</div>
+          <div style="flex:1">
+            <div style="font-size:13px;font-weight:600;color:#1A1A1A;margin-bottom:3px">🎯 HRS9531 预计获批上市</div>
+            <div style="font-size:12px;color:#888780">恒瑞HRS9531预计获NMPA批准；玛仕度肽已上市（2025.7/9），进入医保谈判与渠道扩张关键期</div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:16px;align-items:flex-start">
+          <div style="width:120px;flex-shrink:0;font-size:12px;font-weight:600;color:#7F77DD;text-align:right;padding-top:2px">2026 全年</div>
+          <div style="flex:1">
+            <div style="font-size:13px;font-weight:600;color:#1A1A1A;margin-bottom:3px">💊 阿斯利康 AZD5004 2b期数据读出</div>
+            <div style="font-size:12px;color:#888780">口服GLP-1 2b期结果预计2025年底-2026年初公布；如阳性将重塑口服减重竞争格局</div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:16px;align-items:flex-start">
+          <div style="width:120px;flex-shrink:0;font-size:12px;font-weight:600;color:#7F77DD;text-align:right;padding-top:2px">2026 持续</div>
+          <div style="flex:1">
+            <div style="font-size:13px;font-weight:600;color:#1A1A1A;margin-bottom:3px">💉 埃诺格鲁肽 体重管理NDA审批</div>
+            <div style="font-size:12px;color:#888780">辉瑞/先为达合作产品，糖尿病适应症已于2026年1月在中国上市，减重适应症NDA审批中</div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:16px;align-items:flex-start">
+          <div style="width:120px;flex-shrink:0;font-size:12px;font-weight:600;color:#7F77DD;text-align:right;padding-top:2px">2026 全年</div>
+          <div style="flex:1">
+            <div style="font-size:13px;font-weight:600;color:#1A1A1A;margin-bottom:3px">🩺 替尔泊肽医保执行 + 诺和诺德应对策略</div>
+            <div style="font-size:12px;color:#888780">穆峰达2025年12月进入医保后，2026年执行表现将显著影响诺和诺德中国市场份额；竞争从价格转向疗效+服务综合竞争</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Strategic Insights for 数颐联康 -->
+  <div class="section">
+    <div class="section-title">💡 对数颐联康的战略启示</div>
+    <div style="background:#26215C;border-radius:12px;padding:24px;color:#fff">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+        <div>
+          <div style="font-size:13px;font-weight:600;margin-bottom:10px;color:#CECBF6">市场机会</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.8);line-height:1.8">
+            · GLP-1减重市场2025年141亿元，2030年望超1000亿，<strong style="color:#fff">渗透率仍极低</strong>，蓝海空间巨大<br>
+            · 电商渠道高速增长（+169%），消费医疗属性凸显，与数颐联康"整合照护"理念高度契合<br>
+            · 用户从纯医患向"健康消费者"迁移，<strong style="color:#fff">生活质量管理需求</strong>日益突出
+          </div>
+        </div>
+        <div>
+          <div style="font-size:13px;font-weight:600;margin-bottom:10px;color:#CECBF6">竞争启示</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.8);line-height:1.8">
+            · 品牌叙事已从"减肥"转向"<strong style="color:#fff">健康体重管理+并发症预防</strong>"，需跟上叙事升级<br>
+            · 替尔泊肽虽贵但份额领先，说明<strong style="color:#fff">疗效溢价</strong>比价格敏感更重要<br>
+            · 国产双靶点即将入场，差异化临床叙事（如合并症、心理健康）成突破点
+          </div>
+        </div>
+        <div>
+          <div style="font-size:13px;font-weight:600;margin-bottom:10px;color:#CECBF6">数颐联康切入点</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.8);line-height:1.8">
+            · 整合照护：GLP-1治疗+营养管理+运动干预+心理支持的全周期服务<br>
+            · 针对停药反弹焦虑打造专项产品，这是当前所有品牌<strong style="color:#fff">未充分覆盖</strong>的需求点<br>
+            · 小红书布局：合规内容种草 + 真实用户故事（需避免夸大宣传）
+          </div>
+        </div>
+        <div>
+          <div style="font-size:13px;font-weight:600;margin-bottom:10px;color:#CECBF6">风险提示</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.8);line-height:1.8">
+            · 平台合规风险：小红书已处理5000+违规笔记，营销叙事需<strong style="color:#fff">严守医疗合规边界</strong><br>
+            · 仿制药价格战即将到来（2026年），纯价格竞争不可持续<br>
+            · GLP-1副作用（停药反弹、情绪问题）舆情需<strong style="color:#fff">主动管理</strong>而非回避
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="report-footer">
+    <div class="footer-title">数据来源与说明</div>
+    <p>本报告数据来源：诺和诺德/礼来2025年年报及季报、国家药监局（NMPA）审批记录、Sandalwood联合IQVIA《2026中国减重药物市场全景洞察报告》、36氪、医药魔方、药时代、丁香园、央广网等公开媒体。米内网、百度文库等行业报告引用已注明。社交媒体内容来自公开可检索信息，数据截至2026年5月，部分前瞻性预测请谨慎参考。</p>
+    <p style="margin-top:8px"><strong>辉瑞/埃诺格鲁肽数据来源：</strong>杭州先为达生物与辉瑞商业化战略合作公告（2024年）、国家药监局审批记录（糖尿病适应症于2026年1月获批上市）、NDA受理公示。</p>
+    <p style="margin-top:8px">⚠️ 本报告仅供竞情分析参考，不构成任何投资或医疗建议。</p>
+  </div>
+
+</div>
+</body>
+</html>
